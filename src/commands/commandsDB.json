@@ -1,0 +1,16 @@
+{
+    "chat":[
+        {"trigger":"!discord", "value": "PJSalt Para colaborar y comentar sobre el canal, pásate por Discord: https://discord.gg/UnBtckE","state":true},
+        {"trigger":"!twitter", "value": "BCWarrior Para estar al tanto de cuando se emite y de otras chorradas: https://twitter.com/muxed","state":true},
+        {"trigger":"!instagram", "value": "PJSalt Para estar al tanto de mi vida y esas mierdas: https://www.instagram.com/muxed/","state":true},
+        {"trigger":"!cartones", "value": "SwiftRage Aquí puedes comprar sobres con cosas para putearme y PREMIOS DIRECTOS: https://www.streamloots.com/mux3d","state":true},
+        {"trigger":"!streamloots", "value": "SwiftRage Aquí puedes comprar sobres con cosas para putearme y PREMIOS DIRECTOS: https://www.streamloots.com/mux3d","state":true},
+        {"trigger":"!twitchprime", "value": "ResidentSleeper Si tienes TwitchPrime puedes suscribirte GRATIS a un canal (a ser posible el mío)","state":false},
+        {"trigger":"!instantgaming", "value": "Kappa Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true},
+        {"trigger":"!ig", "value": "PogChamp Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true},
+        {"trigger":"!jueguicos", "value": "SSSsss Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true},
+        {"trigger":"!escena", "value": "ArsonNoSexy Cambia la escena que eres lo peor!!!","state":true},
+        {"trigger":"!commandos", "value": "CoolCat En este repositorio puedes ver los comandos disponibles: https://github.com/juananmuxed/muxbot","state":true},
+        {"trigger":"!coms", "value": "CoolCat En este repositorio puedes ver los comandos disponibles: https://github.com/juananmuxed/muxbot","state":true}
+    ]
+}
