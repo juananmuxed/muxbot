@@ -1,6 +1,6 @@
 <p align=center>
 
-  <img width=300 src="https://imgur.com/vDxBW3g"/>
+  <img width=300 src="https://i.imgur.com/vDxBW3g.jpg"/>
 
   <br>
   <span><strong>MuXBoT</strong> A simply BoT for my Twitch Channel. <a href="https://www.twitch.tv/mux3d">MuX3D Channel</a></span><br />
