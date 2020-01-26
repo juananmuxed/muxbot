@@ -1,16 +1,15 @@
+<p align=center>
 
+  <img width=300 src="https://imgur.com/vDxBW3g"/>
 
-    __  ___       _  __  ____        ______
-   /  |/  /__  __| |/ / / __ ) ____ /_  __/
-  / /|_/ // / / /|   / / __  |/ __ \ / /   
- / /  / // /_/ //   | / /_/ // /_/ // /    
-/_/  /_/ \__,_//_/|_|/_____/ \____//_/     
-                                           
-
-
+  <br>
+  <span><strong>MuXBoT</strong> A simply BoT for my Twitch Channel. <a href="https://www.twitch.tv/mux3d">MuX3D Channel</a></span><br />
+<img src="https://img.shields.io/badge/License-MIT-blue">
+<img src="https://img.shields.io/badge/Version-0.0.1-blue">
+</p>
 
 # MuXBoT
-A simply BoT for my Twitch Channel.
+
 
 ## Commands
 __Social__
@@ -37,6 +36,6 @@ __Utils__
 - [dotenv](https://www.npmjs.com/package/dotenv)
 
 ## License
-This project is under GNU General Public License v3.0 - Details [GNU Licence](https://github.com/juananmuxed/muxbot/blob/master/LICENSE)
+This project is under MIT - Details [MIT Licence](https://github.com/juananmuxed/muxbot/blob/master/LICENSE)
 
-GNU © [MuXeD](https://muxed.es/)
+MIT © [MuXeD](https://muxed.es/)
