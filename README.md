@@ -8,9 +8,6 @@
 <img src="https://img.shields.io/badge/Version-0.0.1-blue">
 </p>
 
-# MuXBoT
-
-
 ## Commands
 __Social__
 ```
