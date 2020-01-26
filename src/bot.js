@@ -1,5 +1,5 @@
 require('dotenv').config();
-const commandDB = require('./commands/commandsDB.json'),
+const commandDB = require('./commands/commandsDB.json');
 const tmi = require('tmi.js');
 const client = new tmi.Client({
     options:{
