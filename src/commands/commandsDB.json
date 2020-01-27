@@ -13,5 +13,9 @@
         {"trigger":"!escena", "value": "ArsonNoSexy Cambia la escena que eres lo peor!!!","state":true},
         {"trigger":"!comandos", "value": "CoolCat En este repositorio puedes ver los comandos disponibles: https://github.com/juananmuxed/muxbot/blob/master/README.md","state":true},
         {"trigger":"!coms", "value": "CoolCat En este repositorio puedes ver los comandos disponibles: https://github.com/juananmuxed/muxbot/blob/master/README.md","state":true}
+    ],
+    "timers":[
+        {"interval":15,"value":"PogChamp Para ver las redes usa !twitter !github !instagram ó !discord","state":true,"minChat":10},
+        {"interval":45,"value":"CoolCat Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true,"minChat":10}
     ]
 }

@@ -1,9 +1,8 @@
 <p align=center>
-
   <img width=300 src="https://i.imgur.com/uvlItJe.jpg"/>
-
   <br>
-  <span><strong>MuXBoT</strong> A simply BoT for my Twitch Channel. <a href="https://www.twitch.tv/mux3d">MuX3D Channel</a></span><br />
+  <span><strong>MuXBoT</strong> A simply BoT for my Twitch Channel.<br>
+  <a href="https://www.twitch.tv/mux3d">MuX3D Channel</a></span><br><br>
 <img src="https://img.shields.io/badge/License-MIT-blue">
 <img src="https://img.shields.io/badge/Version-0.0.1-blue">
 </p>
@@ -13,6 +12,7 @@ __Social__
 ```
 !twitter
 !discord
+!instagram
 ```
 
 __Support__
