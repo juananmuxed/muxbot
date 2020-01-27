@@ -13,6 +13,7 @@ __Social__
 !twitter
 !discord
 !instagram
+!github
 ```
 
 __Support__
