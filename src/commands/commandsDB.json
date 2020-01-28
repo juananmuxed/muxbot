@@ -6,7 +6,8 @@
         {"trigger":"!instagram", "value": "PJSalt Para estar al tanto de mi vida y esas mierdas: https://www.instagram.com/muxed/","state":true},
         {"trigger":"!cartones", "value": "SwiftRage Aquí puedes comprar sobres con cosas para putearme y PREMIOS DIRECTOS: https://www.streamloots.com/mux3d","state":true},
         {"trigger":"!streamloots", "value": "SwiftRage Aquí puedes comprar sobres con cosas para putearme y PREMIOS DIRECTOS: https://www.streamloots.com/mux3d","state":true},
-        {"trigger":"!twitchprime", "value": "ResidentSleeper Si tienes TwitchPrime puedes suscribirte GRATIS a un canal (a ser posible el mío)","state":false},
+        {"trigger":"!twitchprime", "value": "HolidayPresent Si tienes TwitchPrime puedes suscribirte GRATIS a un canal (a ser posible el mío)","state":false},
+        {"trigger":"!prime", "value": "HolidayPresent Si tienes TwitchPrime puedes suscribirte GRATIS a un canal (a ser posible el mío)","state":false},
         {"trigger":"!instantgaming", "value": "Kappa Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true},
         {"trigger":"!ig", "value": "PogChamp Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true},
         {"trigger":"!jueguicos", "value": "SSSsss Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true},
@@ -15,7 +16,9 @@
         {"trigger":"!coms", "value": "CoolCat En este repositorio puedes ver los comandos disponibles: https://github.com/juananmuxed/muxbot/blob/master/README.md","state":true}
     ],
     "timers":[
-        {"interval":15,"value":"PogChamp Para ver las redes usa !twitter !github !instagram ó !discord","state":true,"minChat":10},
-        {"interval":45,"value":"CoolCat Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true,"minChat":10}
+        {"interval":45,"value":"bleedPurple Puedes suscribirte gratis con Amazon Primer !twitchprime ó !prime","state":false,"minChat":5},
+        {"interval":30,"value":"SSSsss Para conocer todos los comands !coms ó !comandos","state":true,"minChat":5},
+        {"interval":50,"value":"PogChamp Para ver las redes usa !twitter !github !instagram ó !discord","state":true,"minChat":10},
+        {"interval":60,"value":"CoolCat Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true,"minChat":10}
     ]
 }

@@ -1,7 +1,6 @@
 require('dotenv').config();
 const commandDB = require('./commands/commandsDB.json');
 const tmi = require('tmi.js');
-var chatMessages = 0;
 const client = new tmi.Client({
     options:{
         debug:true,
@@ -19,6 +18,16 @@ const client = new tmi.Client({
 });
 
 client.connect();
+
+// Vars for timers and stats
+
+var startStreamBot = 0;
+var restartMessages = [];
+var restartMinutes = [];
+for (let i = 0; i < commandDB.timers.length; i++) {
+    restartMessages.push(0);
+    restartMinutes.push(0);
+}
 
 // Trigger for commands (in ./commands/commandsDB.json)
 
@@ -42,10 +51,17 @@ client.on('message', (channel, tags, message, self) => {
 
 client.on('chat', (channel,userstate,message,self) => {
     if (self) return;
-    // Counter
+
+    
+
+    // Counter chat (no streamer)
     if(userstate.badges.broadcaster == null){
-        chatMessages++
+        for (let i = 0; i < commandDB.timers.length; i++) {
+            restartMessages[i]++;
+        }
+        startStreamBot++;
     }
+
     // Giveaway
     if(message.startsWith('!sorteo') || message == '!sorteo'){
         if(userstate.badges.broadcaster == 1){
@@ -82,7 +98,7 @@ client.on('chat', (channel,userstate,message,self) => {
                     console.log(usersToGiveaway);
                     let winner = Math.floor(Math.random() * usersToGiveaway.length);
                     console.log(usersToGiveaway[winner]);
-                    client.say(channel,'PogChamp El sorteo ha acabado y el ganador es... (redoble de tambores)...');
+                    client.say(channel,'PogChamp El sorteo ha acabado con '+ usersToGiveaway.length +' participante(s) y el ganador es... (redoble de tambores)...');
                     client.say(channel,'PogChamp ¡¡Enhorabuena @'+ usersToGiveaway[winner] +'!!');
                 }
             }, timeInMinutes*60000);
@@ -93,19 +109,23 @@ client.on('chat', (channel,userstate,message,self) => {
     }
 })
 
-// Timers for the Timers commands (in ./commands/commandsDB.json) 
+// Interval for timers (in ./commands/commandsDB.json) 
 
 setInterval(() => {
-    let now = new Date();
-    let minutes = now.getMinutes();
+    startStreamBot++;
     for (let i = 0; i < commandDB.timers.length; i++) {
-        if(minutes == commandDB.timers[i].interval){
-            if(commandDB.timers[i].minChat == chatMessages){
-                chatMessages = 0
-                if(commandDB.timers[i].state){
-                    client.say(client.channels[0],commandDB.timers[i].value);
-                }
-            }
+        if(commandDB.timers[i].interval != restartMinutes[i]){
+            restartMinutes[i]++;
         }
+    }
+    
+    for (let i = 0; i < commandDB.timers.length; i++) {
+        if (commandDB.timers[i].interval == restartMinutes[i] && commandDB.timers[i].minChat <= restartMessages[i]) {
+            if(commandDB.timers[i].state){
+                client.say(client.channels[0],commandDB.timers[i].value);
+            }
+            restartMessages[i] = 0;
+            restartMinutes[i] = 0;
+        } 
     }
 }, 60000);

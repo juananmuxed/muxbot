@@ -40,6 +40,25 @@ _Example_
 ```
 This launch a 1 minute Giveaway with a ` !probar ` trigger chat and a 10x Sub options to win.
 
+## Timers
+A timers for commands in the chat in the DB.json - recursive commands or reminders.
+
+__Format__
+```
+{
+"interval":<minutes>,   // each x minutes trigger if enough chat lines
+"value":<text>,   // the text that say a misterious bot
+"state":<active true or false>,   // active or not, this is the question
+"minChat":<min chats for trigger>   // min lines of chat
+},
+```
+_Example_
+```
+{"interval":15,"value":"Random text say by the bot","state":true,"minChat":5},
+
+If at least 5 lines of chat and pass 15 minutes before the last time the bot say that, LAUNCH THE ROCKET!!
+```
+
 ## Repositories
 - [TMI.js](https://github.com/tmijs/tmi.js)
 - [dotenv](https://www.npmjs.com/package/dotenv)
