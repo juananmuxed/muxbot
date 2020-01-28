@@ -84,7 +84,6 @@ _Example_
 ```
 /me kill all
 <muxedbot> kill all too
-
 ```
 
 ## Bot response
@@ -95,7 +94,6 @@ _Example_
 ```
 <user>: hello muxbot // <user>: hello muxedbot
 <muxedbot> Random response
-
 ```
 
 ## Repositories
