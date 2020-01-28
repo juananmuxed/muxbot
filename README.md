@@ -30,6 +30,7 @@ __Utils__
 ```
 
 __Giveaway__
+This launch a 1 minute Giveaway with a ` !probar ` trigger chat and a 10x Sub options to win.
 ```
 !sorteo <timeForEnterInMinutes> <personalizedChatMessageToEnter> <subMultiply>
 default: !sorteo = !sorteo 5 !ticket 5
@@ -38,7 +39,6 @@ _Example_
 ```
 !sorteo 1 !probar 10
 ```
-This launch a 1 minute Giveaway with a ` !probar ` trigger chat and a 10x Sub options to win.
 
 ## Timers
 A timers for commands in the chat in the DB.json - recursive commands or reminders.
