@@ -29,6 +29,17 @@ __Utils__
 !escena
 ```
 
+__Giveaway__
+```
+!sorteo <timeForEnterInMinutes> <personalizedChatMessageToEnter> <subMultiply>
+default: !sorteo 5 !ticket 5
+```
+_Example_
+```
+!sorteo 1 !probar 10
+```
+This launch a 1 minute Giveaway with a ` !probar ` trigger chat and a 10x Sub options to win.
+
 ## Repositories
 - [TMI.js](https://github.com/tmijs/tmi.js)
 - [dotenv](https://www.npmjs.com/package/dotenv)

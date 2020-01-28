@@ -1,7 +1,7 @@
 require('dotenv').config();
 const commandDB = require('./commands/commandsDB.json');
 const tmi = require('tmi.js');
-let chatMessages = 0;
+var chatMessages = 0;
 const client = new tmi.Client({
     options:{
         debug:true,
@@ -20,20 +20,10 @@ const client = new tmi.Client({
 
 client.connect();
 
-// Counter for chat interact (nobot)
-
-client.on("chat",(channel, userstate, message, self)=>{
-    if(self) return;
-    if(!userstate.username == "mux3d" || !userstate.username == "muxedbot"){
-        chatMessages++
-    }
-});
-
 // Trigger for commands (in ./commands/commandsDB.json)
 
 client.on('message', (channel, tags, message, self) => {
-    console.log(message)
-	if(self) return;
+	if (self) return;
 
     for (let i = 0; i < commandDB.chat.length; i++) {
         if(message.toLowerCase() == commandDB.chat[i].trigger){
@@ -47,6 +37,61 @@ client.on('message', (channel, tags, message, self) => {
     }
 
 });
+
+// Command for giveaway and counter
+
+client.on('chat', (channel,userstate,message,self) => {
+    if (self) return;
+    // Counter
+    if(userstate.badges.broadcaster == null){
+        chatMessages++
+    }
+    // Giveaway
+    if(message.startsWith('!sorteo') || message == '!sorteo'){
+        if(userstate.badges.broadcaster == 1){
+            let timeInMinutes = message.split(' ')[1];
+            if(isNaN(timeInMinutes) || timeInMinutes == null){timeInMinutes=5}
+            let triggerToChat = message.split(' ')[2];
+            if(triggerToChat == null){triggerToChat='!ticket'}
+            let subMultiply = message.split(' ')[3];
+            if(subMultiply == null){subMultiply = 5}
+            client.say(channel,'BloodTrail Empieza el sorteo, tenéis '+ timeInMinutes +' minutos para participar. Escribe "'+ triggerToChat +'" en el chat y podrás participar. x'+ subMultiply +' para SUBS.');
+            let usersToGiveaway = []
+            client.on('chat', (channel,userstate,message,self) => {
+                if(message.toLowerCase() == triggerToChat){
+                    if(usersToGiveaway.includes(userstate.username)){
+                        client.say(channel,'WutFace Ya estabas en el sorteo @'+ userstate.username);
+                    }
+                    else{
+                        if(userstate.subscriber){
+                            for (let i = 0; i < subMultiply; i++) {
+                                usersToGiveaway.push(userstate.username);
+                            }
+                        }
+                        else{
+                            usersToGiveaway.push(userstate.username);
+                        }
+                    }
+                }
+            });
+            setTimeout(() => {
+                if(usersToGiveaway.length == 0){
+                    client.say(channel,'4Head Nadie a participado, a si que me lo quedo YO.');
+                }
+                else{
+                    console.log(usersToGiveaway);
+                    let winner = Math.floor(Math.random() * usersToGiveaway.length);
+                    console.log(usersToGiveaway[winner]);
+                    client.say(channel,'PogChamp El sorteo ha acabado y el ganador es... (redoble de tambores)...');
+                    client.say(channel,'PogChamp ¡¡Enhorabuena @'+ usersToGiveaway[winner] +'!!');
+                }
+            }, timeInMinutes*60000);
+        }
+        else{
+            client.say(channel,'4Head Este comando no puedes usarlo HAMIJO.');
+        }
+    }
+})
 
 // Timers for the Timers commands (in ./commands/commandsDB.json) 
 
