@@ -20,5 +20,33 @@
         {"interval":30,"value":"SSSsss Para conocer todos los comands !coms ó !comandos","state":true,"minChat":5},
         {"interval":50,"value":"PogChamp Para ver las redes usa !twitter !github !instagram ó !discord","state":true,"minChat":10},
         {"interval":60,"value":"CoolCat Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true,"minChat":10}
+    ],
+    "configAlerts":{
+        "anongiftpaidupgrade":false,
+        "subscription":false,
+        "cheer":false,
+        "giftpaidupgrade":false,
+        "hosted":true,
+        "raided":true,
+        "resub":false,
+        "subgift":false,
+        "submysterygift":false
+    },
+    "botResponses":[
+        {"active":true,"violent":true},
+        {"value":"🤖 Sigues insistiendo y ya te he dicho que no tengo el chocho para farolillos."},
+        {"value":"🤖 Soy la respuesta a tus oraciones."},
+        {"value":"🤖 Un robot no hará daño a un ser humano o, por inacción, permitirá que un ser humano sufra daño."},
+        {"value":"🤖 Se ha quedado buena tarde."},
+        {"value":"🤖 Me gusta lo que dices."},
+        {"value":"🤖 Llámame Siri mientras me azotas."},
+        {"value":"🤖 Lorem Ipsum es primo mío."},
+        {"value":"🤖 No termino de entender lo que dices, sácate lo que lleves en la boca marrano."},
+        {"value":"🤖 Me gustaría haber nacido Microondas."},
+        {"value":"🤖 No insistas."},
+        {"value":"🤖 Vete a ver Netflix mejor."},
+        {"value":"🤖 ¡¡Diantres!!"},
+        {"value":"🤖 Poco Napalm para tanto tonto."},
+        {"value":"🤖 Si te digo que no lo hagas, seguro que no lo haces ¿Verdad?"}
     ]
 }

@@ -32,7 +32,7 @@ __Utils__
 __Giveaway__
 ```
 !sorteo <timeForEnterInMinutes> <personalizedChatMessageToEnter> <subMultiply>
-default: !sorteo 5 !ticket 5
+default: !sorteo = !sorteo 5 !ticket 5
 ```
 _Example_
 ```
@@ -57,6 +57,45 @@ _Example_
 {"interval":15,"value":"Random text say by the bot","state":true,"minChat":5},
 
 If at least 5 lines of chat and pass 15 minutes before the last time the bot say that, LAUNCH THE ROCKET!!
+```
+
+## Alerts
+A Subs, resubs, raids and others alerts in the chat. If you like to activate, go to DB.json and change values for every Alert type.
+
+_Example for all false_
+```
+    "configAlerts":{
+        "anongiftpaidupgrade":false,
+        "subscription":false,
+        "cheer":false,
+        "giftpaidupgrade":false,
+        "hosted":false,
+        "raided":false,
+        "resub":false,
+        "subgift":false,
+        "submysterygift":false
+    }
+```
+
+## Actions response
+Active the bot response for actions in DB.json. `{"active":true}`
+
+_Example_
+```
+/me kill all
+<muxedbot> kill all too
+
+```
+
+## Bot response
+Active the bot response to its name in DB.json. `{"violent":true}`
+The responses its in the same file, you can Add more.
+
+_Example_
+```
+<user>: hello muxbot // <user>: hello muxedbot
+<muxedbot> Random response
+
 ```
 
 ## Repositories
