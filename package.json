@@ -6,10 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "twitch",
+    "bot",
+    "muxed"
+  ],
+  "author": "MuXeD",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juananmuxed/muxbot/issues"
+  },
   "dependencies": {
+    "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "tmi.js": "^1.5.0"
   }

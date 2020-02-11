@@ -1,10 +1,13 @@
 require('dotenv').config();
+// Functions for future with twitchAPI
+const twitchAPI = require("./utils/twitchFunctionsAPI");
+
 const commandDB = require('./commands/commandsDB.json');
 const tmi = require('tmi.js');
 const client = new tmi.Client({
     options:{
         debug:true,
-        clientId: process.env.TWITCH_CLIENTID
+        clientId: process.env.TWITCH_CLIENT_ID
     },
     connection:{
         reconnect:true,
@@ -28,7 +31,6 @@ for (let i = 0; i < commandDB.timers.length; i++) {
     restartMessages.push(0);
     restartMinutes.push(0);
 }
-var donations = [/* For fill and a final log of the stream */]
 
 // Bot response
 
@@ -42,8 +44,7 @@ function talkingRobot(){
 
 client.on('action', (channel, userstate, message, self) => {
     if (self) return;
-    let botSpeak = talkingRobot();
-    if(userstate.badges.broadcaster == null && commandDB.botResponses[0].active){
+    if(commandDB.botResponses[0].active){
         client.action(channel,message);
     }
 });
@@ -86,7 +87,7 @@ client.on('hosted',(channel, username, viewers, autohost) => {
 
 client.on('raided',(channel, username, viewers) => {
     if(commandDB.configAlerts.raided){
-        client.say(channel,"GivePLZ TakeNRG Gracias @"+ username +", por el Raid de "+ viewers +" personitas.");
+        client.say(channel,"GivePLZ Gracias @"+ username +", por el Raid de "+ viewers +" personitas.");
     }
 });
 
@@ -146,59 +147,105 @@ client.on('chat', (channel,userstate,message,self) => {
 
     // Bot response
 
-    if(message.toLowerCase().indexOf("muxbot") != -1 || message.toLowerCase().indexOf("muxedbot") != -1 && commandDB.botResponses[0].active){
+    if(message.toLowerCase().indexOf("muxbot") != -1 || message.toLowerCase().indexOf("muxedbot") != -1 && commandDB.botResponses[0].violent){
         let sentence = talkingRobot();
         client.say(channel,sentence + " @" + userstate.username);
     }
 
     // Counter chat (no streamer)
-    if(userstate.badges.broadcaster == null){
+    if(userstate['badges-raw']){
+        if(userstate['badges-raw'].indexOf('broadcaster/1') === -1){
+            for (let i = 0; i < commandDB.timers.length; i++) {
+                restartMessages[i]++;
+            }
+            startStreamBot++;
+        }
+    }
+    else{
         for (let i = 0; i < commandDB.timers.length; i++) {
             restartMessages[i]++;
         }
         startStreamBot++;
     }
 
+    // Support command
+
+    if(message.toLowerCase().startsWith('!hamijo') || message.toLowerCase().startsWith('!su')){
+        let user = message.split(' ')[1];
+        if(user == null){
+            client.say(channel,"4Head El formato de ese comando es: !su nickname ó !hamijo nickname. Intenta de nuevo.");
+        } else{
+        
+            if(user.substring(0,1) == "@"){
+                let patron = /@/g
+                let erased = ''
+                user = user.replace(patron,erased)
+            }
+
+            twitchAPI.userCheck(user)
+            .then((response) => {
+                
+                if(response.length == 0){
+                    client.say(channel,"4Head Ese usuario no existe, comprueba que esté bien escrito.");
+                }
+                else{
+                    client.say(channel,"PogChamp PogChamp PogChamp Dale amor a esta personita que se lo merece @" + response[0].display_name + " https://www.twitch.tv/" + response[0].login );
+                }
+                
+            })
+            .catch((error) => {
+                console.log(error);
+                
+            })
+        }
+        
+    }
+
     // Giveaway
     if(message.toLowerCase().startsWith('!sorteo') || message == '!sorteo'){
-        if(userstate.badges.broadcaster == 1){
-            let timeInMinutes = message.split(' ')[1];
-            if(isNaN(timeInMinutes) || timeInMinutes == null){timeInMinutes=5}
-            let triggerToChat = message.split(' ')[2];
-            if(triggerToChat == null){triggerToChat='!ticket'}
-            let subMultiply = message.split(' ')[3];
-            if(subMultiply == null){subMultiply = 5}
-            client.say(channel,'BloodTrail Empieza el sorteo, tenéis '+ timeInMinutes +' minutos para participar. Escribe "'+ triggerToChat +'" en el chat y podrás participar. x'+ subMultiply +' para SUBS.');
-            let usersToGiveaway = []
-            client.on('chat', (channel,userstate,message,self) => {
-                if(message.toLowerCase() == triggerToChat){
-                    if(usersToGiveaway.includes(userstate.username)){
-                        client.say(channel,'WutFace Ya estabas en el sorteo @'+ userstate.username);
-                    }
-                    else{
-                        if(userstate.subscriber){
-                            for (let i = 0; i < subMultiply; i++) {
+        if(userstate['badges-raw']){
+            if(userstate['badges-raw'].includes('broadcaster/1')){
+                let timeInMinutes = message.split(' ')[1];
+                if(isNaN(timeInMinutes) || timeInMinutes == null){timeInMinutes=5}
+                let triggerToChat = message.split(' ')[2];
+                if(triggerToChat == null){triggerToChat='!ticket'}
+                let subMultiply = message.split(' ')[3];
+                if(subMultiply == null){subMultiply = 5}
+                client.say(channel,'BloodTrail Empieza el sorteo, tenéis '+ timeInMinutes +' minutos para participar. Escribe "'+ triggerToChat +'" en el chat y podrás participar. x'+ subMultiply +' para SUBS.');
+                let usersToGiveaway = []
+                client.on('chat', (channel,userstate,message,self) => {
+                    if(message.toLowerCase() == triggerToChat){
+                        if(usersToGiveaway.includes(userstate.username)){
+                            client.say(channel,'WutFace Ya estabas en el sorteo @'+ userstate.username);
+                        }
+                        else{
+                            if(userstate.subscriber){
+                                for (let i = 0; i < subMultiply; i++) {
+                                    usersToGiveaway.push(userstate.username);
+                                }
+                            }
+                            else{
                                 usersToGiveaway.push(userstate.username);
                             }
                         }
-                        else{
-                            usersToGiveaway.push(userstate.username);
-                        }
                     }
-                }
-            });
-            setTimeout(() => {
-                if(usersToGiveaway.length == 0){
-                    client.say(channel,'4Head Nadie a participado, a si que me lo quedo YO.');
-                }
-                else{
-                    console.log(usersToGiveaway);
-                    let winner = Math.floor(Math.random() * usersToGiveaway.length);
-                    console.log(usersToGiveaway[winner]);
-                    client.say(channel,'PogChamp El sorteo ha acabado con '+ usersToGiveaway.length +' participante(s) y el ganador es... (redoble de tambores)...');
-                    client.say(channel,'PogChamp ¡¡Enhorabuena @'+ usersToGiveaway[winner] +'!!');
-                }
-            }, timeInMinutes*60000);
+                });
+                setTimeout(() => {
+                    if(usersToGiveaway.length == 0){
+                        client.say(channel,'4Head Nadie a participado, a si que me lo quedo YO.');
+                    }
+                    else{
+                        console.log(usersToGiveaway);
+                        let winner = Math.floor(Math.random() * usersToGiveaway.length);
+                        console.log(usersToGiveaway[winner]);
+                        client.say(channel,'PogChamp El sorteo ha acabado con '+ usersToGiveaway.length +' participante(s) y el ganador es... (redoble de tambores)...');
+                        client.say(channel,'PogChamp ¡¡Enhorabuena @'+ usersToGiveaway[winner] +'!!');
+                    }
+                }, timeInMinutes*60000);
+            }
+            else{
+                client.say(channel,'4Head Este comando no puedes usarlo HAMIJO.');
+            }
         }
         else{
             client.say(channel,'4Head Este comando no puedes usarlo HAMIJO.');

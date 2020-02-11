@@ -29,7 +29,18 @@ __Utils__
 !escena
 ```
 
+__Support__
+Used to support to a user
+
+```
+!su !hamijo
+
+!su <nickname>
+```
+Response with a link to the nickname's channel in twitch.
+
 __Giveaway__
+Only for Streamer account (can change this)
 ```
 !sorteo <timeForEnterInMinutes> <personalizedChatMessageToEnter> <subMultiply>
 default: !sorteo = !sorteo 5 !ticket 5
