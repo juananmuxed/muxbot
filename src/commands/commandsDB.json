@@ -11,9 +11,10 @@
         {"trigger":"!instantgaming", "value": "Kappa Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true},
         {"trigger":"!ig", "value": "PogChamp Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true},
         {"trigger":"!jueguicos", "value": "SSSsss Si compras juegos en IG y lo haces a través de este enlace me HALLUDAS mucho!! Gracias!! https://www.instant-gaming.com/igr/muxed/","state":true},
-        {"trigger":"!escena", "value": "ArsonNoSexy Cambia la escena que eres lo peor!!!","state":true},
+        {"trigger":"!despistao", "value": "ArsonNoSexy Cambia la escena que eres lo peor!!!","state":true},
         {"trigger":"!comandos", "value": "CoolCat En este repositorio puedes ver los comandos disponibles: https://github.com/juananmuxed/muxbot/blob/master/README.md","state":true},
-        {"trigger":"!coms", "value": "CoolCat En este repositorio puedes ver los comandos disponibles: https://github.com/juananmuxed/muxbot/blob/master/README.md","state":true}
+        {"trigger":"!coms", "value": "CoolCat En este repositorio puedes ver los comandos disponibles: https://github.com/juananmuxed/muxbot/blob/master/README.md","state":true},
+        {"trigger":"!websockets", "value": "Kreygasm Estos son los repositorios de Websocket para hacer la vida mas facil: OBS Studio => https://github.com/Palakis/obs-websocket || OBS Streamlabs => https://github.com/sockjs/sockjs-client","state":true}
     ],
     "timers":[
         {"interval":45,"value":"bleedPurple Puedes suscribirte gratis con Amazon Primer !twitchprime ó !prime","state":false,"minChat":5},
@@ -32,6 +33,10 @@
         "subgift":false,
         "submysterygift":false
     },
+    "scenes":[
+        {"id": 1, "name": "PROGRAMACION", "protected":true},
+        {"id": 2, "name": "INVERSO PROGRAMACION", "protected":true}
+    ],
     "botResponses":[
         {"active":true,"violent":true},
         {"value":"🤖 Sigues insistiendo y ya te he dicho que no tengo el chocho para farolillos."},

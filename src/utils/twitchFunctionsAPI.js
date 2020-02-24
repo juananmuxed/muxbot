@@ -34,6 +34,37 @@ let getAuthToken = new Promise((resolve,reject) => {
     });
 });
 
+// Check user exist
+
+function userCheck(user) {
+    var promise = new Promise((resolve,reject) => {
+        
+        getAuthToken.then((token)=>{
+            var params = new URLSearchParams();
+            params.append('login', user);
+            var options = {
+                headers:{'Authorization':'Bearer ' + token.access_token},
+                params:params
+            }
+            
+            helix.get('/users',options)
+            .then(function(response) {
+                resolve(response.data.data)
+            })
+            .catch(function(error) {
+                reject(error)
+            })
+        })
+        .catch(error => {
+            console.log(error);
+        })
+
+    })
+
+    return promise
+}
+
+// Not used for now in bot =>
 // API petition to streamer subs
 
 let getSubs = new Promise((resolve,reject) => {
@@ -80,35 +111,5 @@ let checkOnline = new Promise((resolve,reject) => {
     })
 
 });
-
-// Check user exist
-
-function userCheck(user) {
-    var promise = new Promise((resolve,reject) => {
-        
-        getAuthToken.then((token)=>{
-            var params = new URLSearchParams();
-            params.append('login', user);
-            var options = {
-                headers:{'Authorization':'Bearer ' + token.access_token},
-                params:params
-            }
-
-            helix.get('/users',options)
-            .then(function(response) {
-                resolve(response.data.data)
-            })
-            .catch(function(error) {
-                reject(error)
-            })
-        })
-        .catch(error => {
-            console.log(error);
-        })
-
-    })
-
-    return promise
-}
 
 module.exports = { userCheck , getAuthToken , getSubs , checkOnline }

@@ -19,6 +19,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
+    "sockjs-client": "^1.4.0",
     "tmi.js": "^1.5.0"
   }
 }

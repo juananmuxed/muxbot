@@ -1,9 +1,9 @@
 require('dotenv').config();
-// Functions for future with twitchAPI
 const twitchAPI = require("./utils/twitchFunctionsAPI");
-
+const websocketSLOBS = require("./utils/websocketSLOBS")
 const commandDB = require('./commands/commandsDB.json');
 const tmi = require('tmi.js');
+
 const client = new tmi.Client({
     options:{
         debug:true,
@@ -60,7 +60,7 @@ client.on('anongiftpaidupgrade',(channel, username, userstate) => {
 client.on('cheer',(channel, userstate, message) => {
     if(commandDB.configAlerts.cheer){
         if(userstate.bits = 1){
-            client.say(channel,"Kreygasm Gracias por el billete de dolar este guarro @"+ userstate.username);
+            client.say(channel,"Kreygasm Gracias por el billete de dolar este @"+ userstate.username);
         }
         else{
             client.say(channel,"SeemsGood Gracias por los "+ userstate.bits +" bits @"+ userstate.username);
@@ -140,10 +140,71 @@ client.on('message', (channel, tags, message, self) => {
 
 });
 
-// Command for giveaway and counter
-
 client.on('chat', (channel,userstate,message,self) => {
     if (self) return;
+
+    // Function to Change Scene
+
+    function websocketChangeScene(scene) {
+        websocketSLOBS.searchScene(scene)
+        .then((res) => {
+            websocketSLOBS.changeScene(res)
+            .then((response) => {
+                client.say(channel, "MrDestructoid " + response)
+            })
+            .catch((e) => {
+                client.say("4Head " + e)
+            })
+        })
+        .catch((error) => {
+            console.log(error);
+            client.say(channel,"4Head " + error)
+        })
+    }
+
+    // Scene change
+
+    if(message.toLowerCase().startsWith('!escena')) {
+        if(message.toLowerCase().startsWith('!escenas')) {
+            let text = "DoritosChip "
+            for (let i = 0; i < commandDB.scenes.length; i++) {
+                text = text.concat(commandDB.scenes[i].id + ": " +commandDB.scenes[i].name + " ")
+            }
+            if(text != "DoritosChip "){
+                client.say(channel,text)
+            }
+        }
+        else{
+            let scene = message.split(' ')[1]
+            if(!scene){
+                client.say(channel,"4Head El formato de ese comando es: !escena <numero>. Intenta de nuevo.")
+            }
+            else{
+                let isProtected = false
+                for (let i = 0; i < commandDB.scenes.length; i++) {
+                    if(commandDB.scenes[i].protected){
+                        isProtected = true
+                    }
+                }
+                if(!isProtected){
+                    websocketChangeScene(scene)
+                }
+                else{
+                    if(userstate['badges-raw']){
+                        if(userstate['badges-raw'].includes('broadcaster/1') || userstate['mod']){
+                            websocketChangeScene(scene)
+                        }
+                        else{
+                            client.say(channel,'4Head Este comando no puedes usarlo HAMIJO.');
+                        }
+                    }
+                    else{
+                        client.say(channel,'4Head Este comando no puedes usarlo HAMIJO.');
+                    }
+                }
+            }
+        }
+    }
 
     // Bot response
 
@@ -195,7 +256,6 @@ client.on('chat', (channel,userstate,message,self) => {
             })
             .catch((error) => {
                 console.log(error);
-                
             })
         }
         

@@ -26,7 +26,7 @@ __Support__
 __Utils__
 ```
 !commandos !coms
-!escena
+!despistao
 ```
 
 __Support__
@@ -70,6 +70,20 @@ _Example_
 If at least 5 lines of chat and pass 15 minutes before the last time the bot say that, LAUNCH THE ROCKET!!
 ```
 
+## Change scenes (for OBS Streamlabs)
+You can change via Chat the scenes in your OBS Streamlabs (if you use OBS Studio please check this Repo [OBS Websocket](https://github.com/Palakis/obs-websocket)).
+
+__Format__
+```
+!escena <sceneNumber>
+```
+
+To see all scenes aplicables
+
+```
+!escenas
+```
+
 ## Alerts
 A Subs, resubs, raids and others alerts in the chat. If you like to activate, go to DB.json and change values for every Alert type.
 
@@ -110,6 +124,7 @@ _Example_
 ## Repositories
 - [TMI.js](https://github.com/tmijs/tmi.js)
 - [dotenv](https://www.npmjs.com/package/dotenv)
+- [SockJS](https://github.com/sockjs/sockjs-client)
 
 ## License
 This project is under MIT - Details [MIT Licence](https://github.com/juananmuxed/muxbot/blob/master/LICENSE)
