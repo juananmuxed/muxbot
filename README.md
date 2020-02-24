@@ -4,7 +4,7 @@
   <span><strong>MuXBoT</strong> A simply BoT for my Twitch Channel.<br>
   <a href="https://www.twitch.tv/mux3d">MuX3D Channel</a></span><br><br>
 <img src="https://img.shields.io/badge/License-MIT-blue">
-<img src="https://img.shields.io/badge/Version-0.0.1-blue">
+<img src="https://img.shields.io/badge/Version-0.4.1-blue">
 </p>
 
 ## Commands
