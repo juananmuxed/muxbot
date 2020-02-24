@@ -30,7 +30,7 @@ __Utils__
 ```
 
 __Support__
-Used to support to a user
+Used to support a valid user
 
 ```
 !su !hamijo
@@ -78,7 +78,7 @@ __Format__
 !escena <sceneNumber>
 ```
 
-To see all scenes aplicables
+To see all applicable scenes
 
 ```
 !escenas
