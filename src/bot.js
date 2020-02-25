@@ -369,7 +369,7 @@ setInterval( async () => {
             console.log('Mandado mensaje a Discord.')
         })
     }
-}, 1000 * 3);
+}, 60000 * 3);
 
 
 clientDiscord.login(process.env.DISCORD_TOKEN)
