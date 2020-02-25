@@ -64,6 +64,27 @@ function userCheck(user) {
     return promise
 }
 
+// Twitch streamer is online 
+
+async function checkOnline() {
+
+    let params = new URLSearchParams();
+    params.append('user_id', user_ids);
+    let options = {
+        headers:{'Client-ID':client_id},
+        params:params
+    }
+    
+    let request = await helix.get('/streams',options)
+    if(request.data.data.length !== 0) {
+        return request.data.data[0]
+    }
+    else{
+        return false
+    }
+
+}
+
 // Not used for now in bot =>
 // API petition to streamer subs
 
@@ -87,27 +108,6 @@ let getSubs = new Promise((resolve,reject) => {
     })
     .catch(error => {
         console.log(error);
-    })
-
-});
-
-// API petition to streamer data
-
-let checkOnline = new Promise((resolve,reject) => {
-
-    let params = new URLSearchParams();
-    params.append('user_id', user_ids);
-    let options = {
-        headers:{'Client-ID':client_id},
-        params:params
-    }
-    
-    helix.get('/streams',options)
-    .then(function(response) {
-        resolve(response)
-    })
-    .catch(function(error) {
-        reject(error)
     })
 
 });

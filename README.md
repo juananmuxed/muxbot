@@ -121,10 +121,15 @@ _Example_
 <muxedbot> Random response
 ```
 
+## Discord Starting Stream
+Added a Connection with Discord.js to the Channel. Operative Bot needed
+Send a message to the .env configurated Channel.
+
 ## Repositories
 - [TMI.js](https://github.com/tmijs/tmi.js)
 - [dotenv](https://www.npmjs.com/package/dotenv)
 - [SockJS](https://github.com/sockjs/sockjs-client)
+- [Discord.js](https://github.com/discordjs/discord.js)
 
 ## License
 This project is under MIT - Details [MIT Licence](https://github.com/juananmuxed/muxbot/blob/master/LICENSE)
