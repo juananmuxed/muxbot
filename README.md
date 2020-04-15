@@ -7,6 +7,9 @@
 <img src="https://img.shields.io/badge/Version-0.4.1-blue">
 </p>
 
+## Buy Me a Coffee
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/U7U21M2BE)
+
 ## Commands
 __Social__
 ```
